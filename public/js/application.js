@@ -17,6 +17,7 @@ $(function () {
         // target body, take background-image and place inside jumbotron
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
-
+        $('#search').removeClass('open');
+        
     })
 });

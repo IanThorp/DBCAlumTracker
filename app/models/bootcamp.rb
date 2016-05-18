@@ -1,4 +1,4 @@
-class Table < ActiveRecord::Base
+class Bootcamp < ActiveRecord::Base
 
   has_many :alums
 
