@@ -1,6 +1,12 @@
 body {
-    padding: 40px 0px;
-    background-image: url(../app/assets/tmro.png);
+  background-image: url(http://i.imgur.com/mXd7o02.png);
+}
+
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 img {
@@ -10,14 +16,14 @@ img {
 
 #jumbotron_text  {
   margin-left: 10%;
-  font-size: 52px;
+  opacity: 1;
 }
-
 
 .jumbotron {
   background-repeat: no-repeat;
-  font-weight: bold;
+  font-weight: bolder;
   margin-bottom: 0px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 #search {

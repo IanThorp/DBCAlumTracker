@@ -1,6 +1,13 @@
 <!DOCTYPE html>
   <html>
     <head>
+      <!-- jquery -->
+      <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+      <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <!-- js -->
+      <script type="text/javascript" src="/js/application.js"></script>
+
+       <%= yield %>
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -20,11 +27,8 @@
     </head>
 
     <body>
-      <!--Import jQuery-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
-      <script type="text/javascript" src="/js/application.js"></script>
 
-      <%= yield %>
+
     </body>
 
 

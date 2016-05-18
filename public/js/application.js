@@ -11,10 +11,12 @@ $(function () {
         }
     });
 
-
-    //Do not include! This prevents the form from submitting for DEMO purposes only!
     $('form').submit(function(event) {
         event.preventDefault();
-        return false;
+        console.log('hi')
+        // target body, take background-image and place inside jumbotron
+        $('body').css('background-image', 'none')
+        $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
+
     })
 });
