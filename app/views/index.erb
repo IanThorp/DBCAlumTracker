@@ -30,11 +30,11 @@
         <tr>
           <td><%=alum.name%></td>
           <td><%=Bootcamp.find(alum.bootcamp_id).name%></td> 
-          <td><a href=<%=alum.compurl%>><%=alum.company%></a></td>
+          <td><a href=<%=alum.compurl%> target="_blank"><%=alum.company%></a></td>
           <td><%=alum.title%></td>
           <td><%=alum.city%></td>
           <td><%=alum.state%></td>
-          <td><a href=<%=alum.linkurl%>>LinkedIn</a></td>
+          <td><a href=<%=alum.linkurl%> target="_blank">LinkedIn</a></td>
         </tr>
       <%end%>
 
