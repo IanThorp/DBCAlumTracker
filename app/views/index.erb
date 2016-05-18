@@ -1,0 +1,119 @@
+<div class="schema-explanation">
+  <h2>Design your schema</h2>
+  <h6 class="center-align"><a href="/">Homepage</a>&nbsp;|&nbsp;<a href="/guide">How-To</a></h6>
+
+  <div class="btn get-started"
+  <h4 class="center-align"><a onclick="openModal()">Add associations</a></h4>
+  </div>
+
+    <div id="openModal" class="modalDialog">
+      <div>
+        <a href="#close" title="Close" class="close">X</a>
+
+        <form class="associations-form" method="POST" action="/<%=@id%>/code">
+          <h3>Before you get your code ...</h3>
+          <p class="remove-margin-bottom">I need to know how your tables relate to each other.</p>
+          <div class="remove-margin-top" style="font-size:0.7em;"><p class="remove-margin-top">(If editing, do not add relationships you've already added to your tables. Only add new relationships.)</p></div>
+
+          <div class="existing-relations">
+            <p>Existing relationships (if any):<br>
+            <%if @relationships.length > 0%>
+              <%@relationships.each do |rel| %>
+                <div id="<%=rel.id%>-rel">
+                  + <%=Table.find(rel.origin_id).name%>&nbsp;<%=rel.assoc%>&nbsp;<%=Table.find(rel.target_id).name%>
+                  <% if rel.channel_id != 0%>
+                  <%=rel.connector%>&nbsp;<%=Table.find(rel.channel_id).name %>
+                  <%end%>
+                  <div style="display:inline;" class="fake-link delete-assoc" id="<%=rel.id%>-rel-del">(delete)</div>
+                </div>
+              <%end%>
+            <%end%>
+            </p>
+          </div>
+
+          <div class="relation-items">
+          </div>
+
+          <br>
+          <p class="add-rel" onclick="addRel()"><a>Add a relationship</a></p>
+
+          <div class="get-code-center">
+          <p><input class="get-code" type="submit" value="Get your code!"></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  <p class="center-align">Current tables:</p>
+
+  <%if @tables.length < 1%>
+    <p class="center-align no-tables">- No Tables -</p>
+  <%end%>
+
+    <%@tables.each do |table|%>
+    <div>
+      <p class="center-align table-name"><%=table.name%></p> 
+      <p class="center-align remove-margin">&nbsp;(<a href="#" id="delete-table-<%=table.id%>" class="delete-table edit-delete">delete</a>)</p>
+        <table>
+         <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
+         <%if table.columns%>
+          <%table.columns.each do |col|%>
+            <tr>
+              <td class="item-main"><%=col.name%></td>
+              <td class="item-main"><%=col.category%></td>
+              <td><%=col.presence?%></td>
+              <td><%=col.unique?%></td>
+              <td><%=col.foreignkey?%></td>
+              <td><%=col.polymorphic?%></td>
+            </tr>
+          <%end%>
+        <%end%>
+        </table>
+
+    </div>
+    <%end%>
+  
+
+  <div class="fill-out-prompt">
+    <p class="center-align prompt-text">Fill out the form below to create your table:</p>
+  </div>
+
+  <div class="moretables">
+    <form id="add-table-form" class="addtable at-active" method="POST" action="/<%=@id%>">
+
+      <p>Table name (e.g., Users, Votes)<br>
+      --> keep it simple, capitalized, and plural:</p>
+      <p><input type="text" name="tablename"></p>
+      <p>Don't add an ID for your table -- it will come as a default. BUT do add foreign keys (following the convention of ending in '_id') and mark them as such via the foreign_key checkbox.</p>
+
+      <p><input class="submit-tables get-code" type="submit" value="Submit Table"></p>
+      
+      <p><a class="another-col" href="#">Add a column</a></p>
+      <div class="morecolumns">
+        <p>Enter a column header and type (lowercase):</p>
+        <input class="header" type="text" name="1-header">
+        <select name="1-type">
+          <option value="integer">integer</option>
+          <option value="float">float</option>
+          <option value="string">string</option>
+          <option value="text">text</option>
+          <option value="datetime">datetime</option>
+          <option value="date">date</option>
+          <option value="time">time</option>
+          <option value="boolean">boolean</option>
+          <option value="references">references</option>
+        </select>
+        <label><input type="checkbox" id="foreignkey" value="1" name="1-foreignkey">foreign key?</label>
+        <label><input type="checkbox" id="presence" value="1" name="1-presence">present?</label>
+        <label><input type="checkbox" id="unique" value="1" name="1-unique">unique?</label>
+        <label><input type="checkbox" id="poly" value="1" name="1-poly">polymorphic? <div style="font-size: 0.5em; display: inline;">(if yes, should be 'references' type and end in 'able')</div></label>
+      </div>
+    </form>
+  </div>
+  
+  <div class="center-button">
+  <p><a href="#"><input class="another-tab" type="submit" value="Create another table"></a></p>
+  </div>
+
+</div>
