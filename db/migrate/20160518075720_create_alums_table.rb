@@ -8,7 +8,7 @@ class CreateAlumsTable < ActiveRecord::Migration
       t.string :state
       t.string :linkurl
       t.string :title
-      t.integer :bootcamp_id
+      t.string :bootcamp
       t.timestamps null: false
     end
   end
