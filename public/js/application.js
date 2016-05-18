@@ -1,4 +1,7 @@
 $(function () {
+
+    $('.alum-list').hide();
+
     $('a[href="#search"]').on('click', function(event) {
         event.preventDefault();
         $('#search').addClass('open');
@@ -18,6 +21,7 @@ $(function () {
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
         $('#search').removeClass('open');
+        $('.alum-list').show();
         
     })
 });
