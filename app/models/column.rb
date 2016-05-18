@@ -1,7 +1,8 @@
-class Column < ActiveRecord::Base
+class Alum < ActiveRecord::Base
 
-  belongs_to :table
-  validates :name, presence: true
-  validates :category, presence: true
+  belongs_to :bootcamp
+  
+  validates :name, :company, :compurl, :city, :state, :linkurl, :title, :bootcamp_id, presence: true
+
 
 end

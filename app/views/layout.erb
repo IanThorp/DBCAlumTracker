@@ -14,91 +14,9 @@
       <!--Import jQuery-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.js"></script>
       <script type="text/javascript" src="/js/application.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
-
-      <!-- Table diagrams -->
-
-      <script id="table-diagram" type="x-tmpl-mustache">
-        <p class="center-align table-name">{{tablename}}</p> 
-        <p class="center-align remove-margin">&nbsp;(<a href="#" id={{table_delete}} class="delete-table edit-delete">delete</a>)</p>
-        <table>
-         <tr><th class="tab-main">Name</th><th class="tab-main">Category</th><th class="tab-vals">Present?</th><th class="tab-vals">Unique?</th><th class="tab-vals">Foreign key?</th><th class="tab-vals">Polymorphic?</th></tr>
-          {{#tablearray}}
-            <tr>
-              <td class="item-main">{{name}}</td>
-              <td class="item-main">{{category}}</td>
-              <td>{{presence?}}</td>
-              <td>{{unique?}}</td>
-              <td>{{foreignkey?}}</td>
-              <td>{{polymorphic?}}</td>
-            </tr>
-          {{/tablearray}}
-        </table>
-      </script>
-
-      <!-- Add more column headers -->
-
-      <script id="morecols" type="x-tmpl-mustache">
-        <p>Enter a column header and type (lowercase):</p>
-          <input class="header" type="text" name="{{index}}-header"> 
-          <select name="{{index}}-type">
-            <option value="integer">integer</option>
-            <option value="float">float</option>
-            <option value="string">string</option>
-            <option value="text">text</option>
-            <option value="datetime">datetime</option>
-            <option value="date">date</option>
-            <option value="time">time</option>
-            <option value="boolean">boolean</option>
-            <option value="references">references</option>
-          </select>
-          <label><input type="checkbox" id="foreignkey" value="1" name="{{index}}-foreignkey">foreign key?</label>
-          <label><input type="checkbox" id="presence" value="1" name="{{index}}-presence">present?</label>
-          <label><input type="checkbox" id="unique" value="1" name="{{index}}-unique">unique?</label>
-          <label><input type="checkbox" id="poly" value="1" name="{{index}}-poly">polymorphic? <div style="font-size: 0.5em; display: inline;">(if yes, should be 'references' type and end in 'able')</div></label>
-
-      </script>
-
-      <!-- Dropdown in Modal -->
-
-      <script id="relation" type="x-tmpl-mustache">
-          <select name="{{index}}-origin">
-            {{#tables}}
-            <option value="{{name}}">{{name}}</option>
-            {{/tables}}
-          </select>
-
-          <select name="{{index}}-rel">
-            <option value="has one">has one</option>
-            <option value="has many">has many</option>
-            <option value="has and belongs to many">has and belongs to many</option>
-            <option value="poly belongs to">(<- poly) belongs to</option>
-          </select>
-
-          <select name="{{index}}-target">
-            {{#tables}}
-            <option value="{{name}}">{{name}}</option>
-            {{/tables}}
-          </select>
-
-          <select name="{{index}}-through">
-            <option value="NA">N/A</option>
-            <option value="through">through</option>
-          </select>
-
-          <select name="{{index}}-channel">
-            <option value="NA">N/A</option>
-            {{#tables}}
-            <option value="{{name}}">{{name}}</option>
-            {{/tables}}
-          </select>
-          <br>
-
-      </script>
 
       <%= yield %>
     </body>
-
 
 
   </html>
