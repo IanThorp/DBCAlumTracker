@@ -11,7 +11,7 @@ img {
   background-repeat: no-repeat;
   font-weight: bold;
   margin-bottom: 0px;
-  background-image: url(/assets/tmro.png);
+  background-image: url(../app/assets/tmro.png);
 }
 
 #search {
