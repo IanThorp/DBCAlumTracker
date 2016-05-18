@@ -107,4 +107,5 @@ table th {
 
 table td, table th {
   text-align: center;
+  font-family: inherit;
 }

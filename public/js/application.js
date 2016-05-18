@@ -14,13 +14,25 @@ $(function () {
         }
     });
 
-    $('form').submit(function(event) {
+    $('.search-form').submit(function(event) {
         event.preventDefault();
-        console.log('hi')
         // target body, take background-image and place inside jumbotron
+        var input = $('.search-form').serializeArray();
+
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
         $('#search').removeClass('open');
+
+        var request = $.ajax({
+              method: "GET",
+              url: '/',
+              data: input
+            })
+
+            request.done(function(data) {
+                
+            })
+
         $('.alum-list').show();
         
     })
