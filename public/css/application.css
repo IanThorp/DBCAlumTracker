@@ -2,6 +2,18 @@ body {
     padding: 40px 0px;
 }
 
+img {
+  max-width:100%;
+  max-height:100%;
+}
+
+.jumbotron {
+  background-repeat: no-repeat;
+  font-weight: bold;
+  margin-bottom: 0px;
+  background-image: url(../assets/tmro.png);
+}
+
 #search {
     position: fixed;
     top: 0px;
