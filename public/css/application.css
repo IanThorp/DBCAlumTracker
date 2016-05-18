@@ -97,7 +97,7 @@ img {
   float: left;
 }
 
-table {
+table, .alum-list {
   margin: auto;
 }
 
@@ -108,4 +108,16 @@ table th {
 table td, table th {
   text-align: center;
   font-family: inherit;
+}
+
+.empty {
+  margin: auto;
+}
+
+.empty p{
+  font-weight: bold;
+  font-size: 1.5em;
+  padding-top: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
 }

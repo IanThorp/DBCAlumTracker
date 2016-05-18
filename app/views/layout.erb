@@ -6,6 +6,8 @@
       <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
       <!-- js -->
       <script type="text/javascript" src="/js/application.js"></script>
+      <!-- mustache -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
 
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -28,6 +30,33 @@
     </head>
 
     <body>
+
+    <script id="alum-diagram" type="x-tmpl-mustache">
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Bootcamp</th>
+            <th>Company</th> 
+            <th>Title</th>
+            <th>City</th>
+            <th>State</th>
+            <th>LinkedIn</th>
+          </tr>
+            {{#alumarray}}
+              <tr>
+                <td>{{name}}</td>
+                <td><a href={{compurl}} target="_blank">{{company}}</a></td>
+                <td>{{title}}</td>
+                <td>{{city}}</td>
+                <td>{{state}}</td>
+                <td>{{bootcamp}}</td>
+                <td><a href={{linkurl}} target="_blank">LinkedIn</a></td>
+              </tr>
+            {{/alumarray}}
+        </table>
+      </script>
+
+
       <%= yield %>
 
     </body>

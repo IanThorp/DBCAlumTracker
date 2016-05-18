@@ -14,32 +14,7 @@
       </form>
   </div>
 
-  <div class="alum-list">
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Bootcamp</th>
-        <th>Company</th> 
-        <th>Title</th>
-        <th>City</th>
-        <th>State</th>
-        <th>LinkedIn</th>
-      </tr>
-
-      <%@alums.each do |alum|%>
-        <tr>
-          <td><%=alum.name%></td>
-          <td><%=Bootcamp.find(alum.bootcamp_id).name%></td> 
-          <td><a href=<%=alum.compurl%> target="_blank"><%=alum.company%></a></td>
-          <td><%=alum.title%></td>
-          <td><%=alum.city%></td>
-          <td><%=alum.state%></td>
-          <td><a href=<%=alum.linkurl%> target="_blank">LinkedIn</a></td>
-        </tr>
-      <%end%>
-
-    </table>
-
-  </div>
+  <div class="alum-list"></div>
+  
 </div>
 

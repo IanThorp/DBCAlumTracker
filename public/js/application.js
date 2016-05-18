@@ -22,6 +22,8 @@ $(function () {
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
         $('#search').removeClass('open');
+        $('.alum-list').empty();
+        $('.alum-list').show();
 
         var request = $.ajax({
               method: "GET",
@@ -30,10 +32,16 @@ $(function () {
             })
 
             request.done(function(data) {
-                
+                var template = $("#alum-diagram").html();
+
+                if (data.empty === "no"){
+                    var content = Mustache.render(template, {alumarray: data.alumarray});
+                    $('.alum-list').append(content);
+                }else{
+                    $('.alum-list').html("<div class='empty'><p>We could not find anyone that matched your search term(s)</p></div>");
+                }
             })
 
-        $('.alum-list').show();
         
     })
 });
