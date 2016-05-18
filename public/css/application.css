@@ -96,3 +96,7 @@ img {
 #search_button {
   float: left;
 }
+
+table {
+  margin: auto;
+}
