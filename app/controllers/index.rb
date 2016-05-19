@@ -12,20 +12,12 @@ get '/' do
 		if raw.length < 1
 			@alums = Alum.all
 		else
-			all_alums = Alum.all
-			
+
 			search.each do |item|
-
-				all_alums.each do |alum|
-					@alums << alum if alum.name.downcase.include? item
-					@alums << alum if alum.company.downcase.include? item
-					@alums << alum if alum.city.downcase.include? item
-					@alums << alum if alum.state.downcase.include? item
-					@alums << alum if alum.title.downcase.include? item
-					@alums << alum if alum.bootcamp.downcase.include? item	
-				end
-
+				@alums << Alum.where("name ILIKE ? OR company ILIKE ? OR city ILIKE ? OR state ILIKE ? OR title ILIKE ? OR bootcamp ILIKE ?", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%")
 			end
+
+			@alums.flatten!
 		end
 
 		if @alums.length < 1
@@ -41,6 +33,27 @@ get '/' do
     else
 		erb :index
   	end
+
+end
+
+get '/admin' do
+
+	@alums = Alum.all
+
+	if request.xhr?
+		pw = params["password"]
+
+		if pw == ENV['admin_pw']
+			check = "yes"
+		else
+			check = "no"
+		end
+
+		send = {alumarray: @alums, admin_check: check}
+		content_type :json
+    	send.to_json
+
+	end
 
 end
 

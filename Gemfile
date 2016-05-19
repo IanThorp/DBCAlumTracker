@@ -12,14 +12,11 @@ gem 'sinatra-contrib'
 
 gem 'activesupport'
 gem 'activerecord'
-gem 'bcrypt'
 gem 'materialize-sass'
 
 gem 'rake'
 
 gem 'shotgun'
-
-gem 'url_shortener'
 
 group :test do
   gem 'shoulda-matchers'

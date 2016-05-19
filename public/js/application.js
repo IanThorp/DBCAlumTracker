@@ -61,5 +61,37 @@ $(function () {
         }
     });
 
+    $('.signin-form').submit(function(event) {
+        event.preventDefault();
+        // target body, take background-image and place inside jumbotron
+        var input = $('.signin-form').serializeArray();
+
+        $('body').css('background-image', 'none')
+        $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
+        $('#signin').removeClass('open');
+
+        var request = $.ajax({
+              method: "GET",
+              url: '/admin',
+              data: input
+            })
+
+            request.done(function(data) {
+
+                var template = $("#alum-diagram").html();
+
+                if (data.admin_check === "yes"){
+                    var content = Mustache.render(template, {alumarray: data.alumarray});
+                    $('.admin-checker').html("<div class='admin-success'><p>You've successfully logged in.</p></div>");
+                    $('.alum-list').append(content);
+                }else{
+                    $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
+                }
+                
+            })
+
+        
+    })
+
 
 });
