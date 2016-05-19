@@ -2,6 +2,8 @@ $(function () {
 
     $('.alum-list').hide();
     $('.admin-logout-double').hide();
+    $('.add-alum-double').hide();
+    $('.add-alum').hide();
 
     // Search
 
@@ -91,7 +93,10 @@ $(function () {
                     $('.admin-checker').show()
                     $('.admin-access').hide()
                     $('.admin-logout').show()
+                    $('.add-admin-link').show()
                     $('.admin-logout-double').show()
+                    $('.add-admin-double').show()
+                   
                 }else{
                     $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
                 }
@@ -99,6 +104,15 @@ $(function () {
             })
 
         
+    })
+
+    // Add Alum
+
+    $('.add-alum-link').on('click',function(event){
+        event.preventDefault()
+        $('body').css('background-image', 'none')
+        $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
+        $('.add-alum').show();
     })
 
 
