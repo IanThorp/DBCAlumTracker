@@ -31,6 +31,7 @@ $(function () {
         $('#search').removeClass('open');
         $('.alum-list').empty();
         $('.alum-list').show();
+        $('.delete-error-area').empty()
 
         var request = $.ajax({
               method: "GET",
@@ -143,7 +144,42 @@ $(function () {
                 }
                 
             })
-    })    
+    })  
+
+    // Remove Alum
+
+    $('body').on('click','.remove-alum',function(event){
+        event.preventDefault()
+
+        $('.delete-error-area').empty()
+
+        var parent = $(this).parent().parent()
+        var name = parent.children(":first").html()
+
+        var input = {name: name}
+
+        var request = $.ajax({
+              method: "DELETE",
+              url: '/alums',
+              data: input
+            })
+
+            request.done(function(data) {
+
+                if(data.name === ""){
+                    $('.delete-error-area').html("<div class='del-error'>You cannot delete an alum without admin privileges</div>")
+                }else{
+                    parent.hide()
+                    $('.delete-error-area').html("<div class='del-new'>"+data.name+" has been deleted from the alum list!</div>")
+                }
+                
+            })
+
+        
+
+        
+        
+    })  
 
 
 

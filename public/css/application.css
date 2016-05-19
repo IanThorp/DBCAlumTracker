@@ -131,18 +131,18 @@ table td, table th {
   margin-bottom: 5%;
 }
 
-.admin-checker, .add-new, .add-error{
+.admin-checker, .add-new, .add-error, .del-new, .del-error{
   padding-top: 5%;
   padding-right: 10%;
   padding-left: 10%;
 }
 
-.admin-success, .add-new {
+.admin-success, .add-new, .del-new {
   color: green;
   font-weight: bolder;
 }
 
-.admin-failure, .add-error {
+.admin-failure, .add-error, .del-error {
   color: red;
   font-weight: bolder;
 }

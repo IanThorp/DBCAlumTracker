@@ -94,4 +94,25 @@ post '/alums/new' do
 
 end
 
+delete '/alums' do
+
+	if request.xhr?
+		
+		if session[:admin] == "yes"
+			alum = Alum.find_by(name: params[:name])
+			Alum.destroy(alum.id)
+			
+			send = {name: params[:name]}
+			content_type :json
+    		send.to_json	
+    	else
+    		send = {name: ""}
+    		content_type :json
+    		send.to_json
+    	end
+		
+	end
+
+end
+
 
