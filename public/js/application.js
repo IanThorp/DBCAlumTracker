@@ -59,7 +59,7 @@ $(function () {
     $('a[href="#signin"]').on('click', function(event) {
         event.preventDefault();
         $('#signin').addClass('open');
-        $('#signin > form > input[type="search"]').focus();
+        $('#signin > form > input[type="password"]').focus();
     });
 
     $('#signin, #signin button.close').on('click keyup', function(event) {
@@ -95,7 +95,7 @@ $(function () {
                     $('.admin-logout').show()
                     $('.add-admin-link').show()
                     $('.admin-logout-double').show()
-                    $('.add-admin-double').show()
+                    $('.add-alum-double').show()
                    
                 }else{
                     $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
@@ -108,10 +108,11 @@ $(function () {
 
     // Add Alum
 
-    $('.add-alum-link').on('click',function(event){
+    $('.add-alum-link, .add-alum-double').on('click',function(event){
         event.preventDefault()
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
+        $('.admin-checker').hide();
         $('.add-alum').show();
     })
 
