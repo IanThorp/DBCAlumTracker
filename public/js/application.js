@@ -49,11 +49,11 @@ $(function () {
                         $('.remove-alum').hide();
                     }
                 }else{
-                    $('.alum-list').html("<div class='empty'><p>We could not find anyone that matched your search term(s)</p></div>");
+                    $('.alum-list').html("<div class='alert alert-danger'><p>We could not find anyone that matched your search term(s)</p></div>");
                 }
             })
 
-        
+
     })
 
     // Admin login
@@ -91,21 +91,21 @@ $(function () {
                 var template = $("#alum-diagram").html();
 
                 if (data.admin_check === "yes"){
-                    $('.admin-checker').html("<div class='admin-success'><p>You've successfully logged in.</p></div>");
+                    $('.admin-checker').html("<div class='alert alert-success'><p>You've successfully logged in.</p></div>");
                     $('.admin-checker').show()
                     $('.admin-access').hide()
                     $('.admin-logout').show()
                     $('.add-admin-link').show()
                     $('.admin-logout-double').show()
                     $('.add-alum-double').show()
-                   
+
                 }else{
-                    $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
+                    $('.admin-checker').html("<div class='alert alert-danger'><p>You've entered an incorrect password.</p></div>");
                 }
-                
+
             })
 
-        
+
     })
 
     // Add Alum
@@ -142,9 +142,9 @@ $(function () {
                 }else{
                     $('.alum-list').html("<div class='add-new'>"+data.name+" has been added to the alum list!</div>")
                 }
-                
+
             })
-    })  
+    })
 
     // Remove Alum
 
@@ -172,14 +172,14 @@ $(function () {
                     parent.hide()
                     $('.delete-error-area').html("<div class='del-new'>"+data.name+" has been deleted from the alum list!</div>")
                 }
-                
+
             })
 
-        
 
-        
-        
-    })  
+
+
+
+    })
 
 
 
