@@ -13,6 +13,8 @@ get '/' do
 			@alums = Alum.all
 		else
 
+			#REFACTOR OPPORTUNITY - Full-text indexing --- check out elasticsearch
+
 			search.each do |item|
 				@alums << Alum.where("name ILIKE ? OR company ILIKE ? OR city ILIKE ? OR state ILIKE ? OR title ILIKE ? OR bootcamp ILIKE ?", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%", "%#{item}%")
 			end
@@ -38,22 +40,31 @@ end
 
 get '/admin' do
 
-	@alums = Alum.all
-
 	if request.xhr?
 		pw = params["password"]
 
 		if pw == ENV['admin_pw']
 			check = "yes"
+			session[:admin] = check
 		else
 			check = "no"
 		end
 
-		send = {alumarray: @alums, admin_check: check}
+		send = {admin_check: check}
 		content_type :json
     	send.to_json
 
 	end
+
+end
+
+get '/signout' do
+
+	if session[:admin]
+		session.delete(:admin)
+	end
+
+	redirect '/'
 
 end
 

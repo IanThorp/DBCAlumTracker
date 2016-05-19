@@ -1,6 +1,7 @@
 $(function () {
 
     $('.alum-list').hide();
+    $('.admin-logout-double').hide();
 
     // Search
 
@@ -18,6 +19,7 @@ $(function () {
 
     $('.search-form').submit(function(event) {
         event.preventDefault();
+        $('.admin-checker').hide()
         // target body, take background-image and place inside jumbotron
         var input = $('.search-form').serializeArray();
 
@@ -81,8 +83,10 @@ $(function () {
                 var template = $("#alum-diagram").html();
 
                 if (data.admin_check === "yes"){
-                    var content = Mustache.render(template, {alumarray: data.alumarray});
                     $('.admin-checker').html("<div class='admin-success'><p>You've successfully logged in.</p></div>");
+                    $('.admin-access').hide()
+                    $('.admin-logout').show()
+                    $('.admin-logout-double').show()
                     $('.alum-list').append(content);
                 }else{
                     $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");

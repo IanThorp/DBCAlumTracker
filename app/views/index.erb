@@ -4,7 +4,12 @@
     <h1>Tomorrow.</h1>
     <p>Life after school.</p>
     <a href="#search">Search for Bootcamp Alums</a><br>
-    <a href="#signin">Admin access</a>
+    <%if session[:admin]%>
+      <div class="admin-logout"><a href="/signout">Admin logout</a></div>
+    <%else%>
+      <div class="admin-access"><a href="#signin">Admin access</a></div>
+    <%end%>
+      <div class="admin-logout-double"><a href="/signout">Admin logout</a></div>
   </div>
 </div>
 
@@ -22,6 +27,8 @@
         <input name="password" type="search" type="password" placeholder="admin password" />
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
+  </div>
+
   </div>
 
   <div class="admin-checker"></div>

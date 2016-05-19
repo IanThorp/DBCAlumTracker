@@ -41,6 +41,9 @@
             <th>City</th>
             <th>State</th>
             <th>LinkedIn</th>
+            <%if session[:admin]%>
+            <th></th>
+            <%end%>
           </tr>
             {{#alumarray}}
               <tr>
@@ -51,6 +54,9 @@
                 <td>{{city}}</td>
                 <td>{{state}}</td>
                 <td><a href={{linkurl}} target="_blank">LinkedIn</a></td>
+                <%if session[:admin]%>
+                <td>Remove</td>
+                <%end%>
               </tr>
             {{/alumarray}}
         </table>

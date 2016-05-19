@@ -97,7 +97,7 @@ img {
   float: left;
 }
 
-table, .alum-list, .admin-checker {
+table, .alum-list, .admin-checker, .admin-checker {
   margin: auto;
 }
 
@@ -129,4 +129,20 @@ table td, table th {
 
 .alum-list {
   margin-bottom: 5%;
+}
+
+.admin-checker{
+  padding-top: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.admin-success {
+  color: green;
+  font-weight: bolder;
+}
+
+.admin-failure {
+  color: red;
+  font-weight: bolder;
 }
