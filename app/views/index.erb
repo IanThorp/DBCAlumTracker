@@ -5,10 +5,12 @@
     <p>Life after school.</p>
     <a href="#search">Search for Bootcamp Alums</a><br>
     <%if session[:admin]%>
+      <div class="add-alum-link"><a href="#">Add alum</a></div>
       <div class="admin-logout"><a href="/signout">Admin logout</a></div>
     <%else%>
       <div class="admin-access"><a href="#signin">Admin access</a></div>
     <%end%>
+      <div class="add-alum-double"><a href="#">Add alum</a></div>
       <div class="admin-logout-double"><a href="/signout">Admin logout</a></div>
   </div>
 </div>
@@ -32,6 +34,33 @@
   </div>
 
   <div class="admin-checker"></div>
+
+  <div class="add-alum">
+    <form class="form-style-9 add-form">
+      <ul>
+        <li>
+          <input type="text" name="name" class="field-style field-split align-left" placeholder="Name" required/>
+          <input type="url" name="linkurl" class="field-style field-split align-right" placeholder="LinkedIn URL" required/>
+        </li>
+        <li>
+          <input type="text" name="company" class="field-style field-split align-left" placeholder="Company" required/>
+          <input type="url" name="compurl" class="field-style field-split align-right" placeholder="Company Website" required/>
+        </li>
+        <li>
+          <input type="text" name="role" class="field-style field-split align-left" placeholder="Role" required/>
+          <input type="text" name="bootcamp" class="field-style field-split align-right" placeholder="Bootcamp" required/>
+        </li>
+        <li>
+          <input type="text" name="city" class="field-style field-split align-left" placeholder="City" required/>
+          <input type="text" name="state" class="field-style field-split align-right" placeholder="State" required/>
+        </li>
+        
+        <li>
+          <input type="submit" value="Add alum" />
+        </li>
+      </ul>
+    </form>
+  </div>
 
   <div class="alum-list"></div>
 

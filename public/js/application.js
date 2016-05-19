@@ -2,11 +2,14 @@ $(function () {
 
     $('.alum-list').hide();
     $('.admin-logout-double').hide();
+    $('.add-alum-double').hide();
+    $('.add-alum').hide();
 
     // Search
 
     $('a[href="#search"]').on('click', function(event) {
         event.preventDefault();
+        $('.add-alum').hide();
         $('#search').addClass('open');
         $('#search > form > input[type="search"]').focus();
     });
@@ -57,7 +60,7 @@ $(function () {
     $('a[href="#signin"]').on('click', function(event) {
         event.preventDefault();
         $('#signin').addClass('open');
-        $('#signin > form > input[type="search"]').focus();
+        $('#signin > form > input[type="password"]').focus();
     });
 
     $('#signin, #signin button.close').on('click keyup', function(event) {
@@ -91,7 +94,10 @@ $(function () {
                     $('.admin-checker').show()
                     $('.admin-access').hide()
                     $('.admin-logout').show()
+                    $('.add-admin-link').show()
                     $('.admin-logout-double').show()
+                    $('.add-alum-double').show()
+                   
                 }else{
                     $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
                 }
@@ -100,6 +106,45 @@ $(function () {
 
         
     })
+
+    // Add Alum
+
+    $('.add-alum-link, .add-alum-double').on('click',function(event){
+        event.preventDefault()
+        $('body').css('background-image', 'none')
+        $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
+        $('.admin-checker').hide();
+        $('.alum-list').hide();
+        $('.add-form').trigger("reset");
+        $('.add-alum').show();
+    })
+
+    $('.add-form').submit(function(event) {
+        event.preventDefault();
+        // target body, take background-image and place inside jumbotron
+        var input = $('.add-form').serializeArray();
+
+        var request = $.ajax({
+              method: "POST",
+              url: '/alums/new',
+              data: input
+            })
+
+            request.done(function(data) {
+
+                $('.add-alum').hide();
+                $('.alum-list').empty()
+                $('.alum-list').show()
+
+                if(data.name === ""){
+                    $('.alum-list').html("<div class='add-error'>You cannot add an alum without admin privileges</div>")
+                }else{
+                    $('.alum-list').html("<div class='add-new'>"+data.name+" has been added to the alum list!</div>")
+                }
+                
+            })
+    })    
+
 
 
 });

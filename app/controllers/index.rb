@@ -74,3 +74,24 @@ get '/signout' do
 
 end
 
+post '/alums/new' do
+
+	if request.xhr?
+		
+		if session[:admin] == "yes"
+			Alum.create(name: params[:name], company: params[:company], compurl: params[:compurl], city: params[:city], state: params[:state], linkurl: params[:linkurl], title: params[:role], bootcamp: params[:bootcamp])
+			
+			send = {name: params[:name]}
+			content_type :json
+    		send.to_json	
+    	else
+    		send = {name: ""}
+    		content_type :json
+    		send.to_json
+    	end
+		
+	end
+
+end
+
+
