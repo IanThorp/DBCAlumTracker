@@ -41,6 +41,9 @@ $(function () {
                 if (data.empty === "no"){
                     var content = Mustache.render(template, {alumarray: data.alumarray});
                     $('.alum-list').append(content);
+                    if(data.admin === "no"){
+                        $('.remove-alum').hide();
+                    }
                 }else{
                     $('.alum-list').html("<div class='empty'><p>We could not find anyone that matched your search term(s)</p></div>");
                 }
@@ -71,6 +74,7 @@ $(function () {
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
         $('#signin').removeClass('open');
+        $('.alum-list').empty();
 
         var request = $.ajax({
               method: "GET",
@@ -84,10 +88,10 @@ $(function () {
 
                 if (data.admin_check === "yes"){
                     $('.admin-checker').html("<div class='admin-success'><p>You've successfully logged in.</p></div>");
+                    $('.admin-checker').show()
                     $('.admin-access').hide()
                     $('.admin-logout').show()
                     $('.admin-logout-double').show()
-                    $('.alum-list').append(content);
                 }else{
                     $('.admin-checker').html("<div class='admin-failure'><p>You've entered an incorrect password.</p></div>");
                 }

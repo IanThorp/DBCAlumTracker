@@ -41,12 +41,10 @@
             <th>City</th>
             <th>State</th>
             <th>LinkedIn</th>
-            <%if session[:admin]%>
             <th></th>
-            <%end%>
           </tr>
             {{#alumarray}}
-              <tr>
+              <tr id={{linkurl}}>
                 <td>{{name}}</td>
                 <td>{{bootcamp}}</td>
                 <td><a href={{compurl}} target="_blank">{{company}}</a></td>
@@ -54,9 +52,7 @@
                 <td>{{city}}</td>
                 <td>{{state}}</td>
                 <td><a href={{linkurl}} target="_blank">LinkedIn</a></td>
-                <%if session[:admin]%>
-                <td>Remove</td>
-                <%end%>
+                <td><div class="remove-alum">Remove</div></td>
               </tr>
             {{/alumarray}}
         </table>

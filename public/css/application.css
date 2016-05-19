@@ -58,7 +58,7 @@ img {
     opacity: 1;
 }
 
-#search input[type="search"], #signin input[type="search"] {
+#search input[type="search"], #signin input[type="password"] {
     position: absolute;
     top: 50%;
     width: 100%;
@@ -145,4 +145,12 @@ table td, table th {
 .admin-failure {
   color: red;
   font-weight: bolder;
+}
+
+.remove-alum {
+  color: blue;
+}
+
+.remove-alum:hover {
+  text-decoration: underline;
 }

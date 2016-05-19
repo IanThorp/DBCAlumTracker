@@ -27,8 +27,14 @@ get '/' do
 		else
 			empty = "no"
 		end
+
+		if session[:admin]
+			admin = "yes"
+		else
+			admin = "no"
+		end
 		
-		send = {alumarray: @alums, empty: empty}
+		send = {alumarray: @alums, empty: empty, admin: admin}
 		content_type :json
     	send.to_json
 
