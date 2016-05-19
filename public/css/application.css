@@ -26,7 +26,7 @@ img {
   background: rgba(255, 255, 255, 0.5);
 }
 
-#search {
+#search, #signin {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -49,7 +49,7 @@ img {
     opacity: 0;
 }
 
-#search.open {
+#search.open, #signin.open {
     -webkit-transform: translate(0px, 0px) scale(1, 1);
     -moz-transform: translate(0px, 0px) scale(1, 1);
 	-o-transform: translate(0px, 0px) scale(1, 1);
@@ -58,7 +58,7 @@ img {
     opacity: 1;
 }
 
-#search input[type="search"] {
+#search input[type="search"], #signin input[type="search"] {
     position: absolute;
     top: 50%;
     width: 100%;
@@ -74,14 +74,14 @@ img {
     padding-right: 30px;
     outline: none;
 }
-#search .btn {
+#search .btn, #signin .btn {
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: 61px;
     margin-left: -45px;
 }
-#search .close {
+#search .close, #signin .close {
   position: fixed;
   top: 15px;
   right: 15px;
@@ -125,4 +125,8 @@ table td, table th {
   padding-top: 5%;
   padding-right: 10%;
   padding-left: 10%;
+}
+
+.alum-list {
+  margin-bottom: 5%;
 }
