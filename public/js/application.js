@@ -9,6 +9,7 @@ $(function () {
 
     $('a[href="#search"]').on('click', function(event) {
         event.preventDefault();
+        $('.add-alum').hide();
         $('#search').addClass('open');
         $('#search > form > input[type="search"]').focus();
     });
@@ -113,8 +114,37 @@ $(function () {
         $('body').css('background-image', 'none')
         $('.jumbotron').css('background-image', 'url(http://i.imgur.com/mXd7o02.png');
         $('.admin-checker').hide();
+        $('.alum-list').hide();
+        $('.add-form').trigger("reset");
         $('.add-alum').show();
     })
+
+    $('.add-form').submit(function(event) {
+        event.preventDefault();
+        // target body, take background-image and place inside jumbotron
+        var input = $('.add-form').serializeArray();
+
+        var request = $.ajax({
+              method: "POST",
+              url: '/alums/new',
+              data: input
+            })
+
+            request.done(function(data) {
+
+                $('.add-alum').hide();
+                $('.alum-list').empty()
+                $('.alum-list').show()
+
+                if(data.name === ""){
+                    $('.alum-list').html("<div class='add-error'>You cannot add an alum without admin privileges</div>")
+                }else{
+                    $('.alum-list').html("<div class='add-new'>"+data.name+" has been added to the alum list!</div>")
+                }
+                
+            })
+    })    
+
 
 
 });
