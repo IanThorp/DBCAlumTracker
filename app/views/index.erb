@@ -2,10 +2,17 @@
 <div class="jumbotron">
   <div id="jumbotron_text">
     <h1>Tomorrow.</h1>
-    <p>Life after bootcamp.</p>
-    <a href="#search">Search for Bootcamp Alums</a>
+    <p>Life after school.</p>
+    <a href="#search">Search for Bootcamp Alums</a><br>
+    <%if session[:admin]%>
+      <div class="admin-logout"><a href="/signout">Admin logout</a></div>
+    <%else%>
+      <div class="admin-access"><a href="#signin">Admin access</a></div>
+    <%end%>
+      <div class="admin-logout-double"><a href="/signout">Admin logout</a></div>
   </div>
 </div>
+
   <div id="search">
       <button type="button" class="close">×</button>
       <form class="search-form">
@@ -14,7 +21,17 @@
       </form>
   </div>
 
+  <div id="signin">
+      <button type="button" class="close">×</button>
+      <form class="signin-form">
+        <input name="password" type="password" placeholder="admin password" />
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+  </div>
+
+  </div>
+
+  <div class="admin-checker"></div>
+
   <div class="alum-list"></div>
-  
-</div>
 
