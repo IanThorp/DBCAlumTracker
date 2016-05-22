@@ -31,7 +31,6 @@ $(function () {
         $('#search').removeClass('open');
         $('.alum-list').empty();
         $('.alum-list').show();
-        $('.delete-error-area').empty()
 
         var request = $.ajax({
               method: "GET",
@@ -134,13 +133,15 @@ $(function () {
             request.done(function(data) {
 
                 $('.add-alum').hide();
-                $('.alum-list').empty()
-                $('.alum-list').show()
+                $('.alum-list').empty();
+                $('.alum-list').show();
+                $('.admin-checker').empty();
+                $('.admin-checker').show();
 
                 if(data.name === ""){
-                    $('.alum-list').html("<div class='add-error'>You cannot add an alum without admin privileges</div>")
+                    $('.admin-checker').html("<div class='alert alert-danger'>You cannot add an alum without admin privileges</div>")
                 }else{
-                    $('.alum-list').html("<div class='add-new'>"+data.name+" has been added to the alum list!</div>")
+                    $('.admin-checker').html("<div class='alert alert-success'>"+data.name+" has been added to the alum list!</div>")
                 }
 
             })
@@ -151,7 +152,8 @@ $(function () {
     $('body').on('click','.remove-alum',function(event){
         event.preventDefault()
 
-        $('.delete-error-area').empty()
+        $('.admin-checker').hide();
+        $('.admin-checker').empty();
 
         var parent = $(this).parent().parent()
         var name = parent.children(":first").html()
@@ -166,11 +168,13 @@ $(function () {
 
             request.done(function(data) {
 
+                $('.admin-checker').show();
+
                 if(data.name === ""){
-                    $('.delete-error-area').html("<div class='del-error'>You cannot delete an alum without admin privileges</div>")
+                    $('.admin-checker').html("<div class='alert alert-danger'>You cannot delete an alum without admin privileges</div>")
                 }else{
                     parent.hide()
-                    $('.delete-error-area').html("<div class='del-new'>"+data.name+" has been deleted from the alum list!</div>")
+                    $('.admin-checker').html("<div class='alert alert-success'>"+data.name+" has been deleted from the alum list!</div>")
                 }
 
             })
