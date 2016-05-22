@@ -31,6 +31,7 @@ $(function () {
         $('#search').removeClass('open');
         $('.alum-list').empty();
         $('.alum-list').show();
+        $('.admin-checker').empty();
 
         var request = $.ajax({
               method: "GET",
@@ -48,7 +49,8 @@ $(function () {
                         $('.remove-alum').hide();
                     }
                 }else{
-                    $('.alum-list').html("<div class='alert alert-danger'><p>We could not find anyone that matched your search term(s)</p></div>");
+                    $('.admin-checker').show();
+                    $('.admin-checker').html("<div class='alert alert-danger'><p>We could not find anyone that matched your search term(s)</p></div>");
                 }
             })
 
