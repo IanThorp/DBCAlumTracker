@@ -137,16 +137,6 @@ table td, table th {
   padding-left: 10%;
 }
 
-.admin-success, .add-new, .del-new {
-  color: green;
-  font-weight: bolder;
-}
-
-.admin-failure, .add-error, .del-error {
-  color: red;
-  font-weight: bolder;
-}
-
 .remove-alum {
   color: blue;
 }
